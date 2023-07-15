@@ -13,6 +13,12 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
+      - name: setup JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'zulu' # See 'Supported
+
       - name: Spring Application Build
         run: ./gradlew build
 

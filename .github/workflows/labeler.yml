@@ -11,4 +11,4 @@ jobs:
       - name: PR Labeler
         uses: actions/labeler@main
         with:
-          token: ${{ secrets.SSH_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}

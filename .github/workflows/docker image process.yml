@@ -42,8 +42,8 @@ jobs:
           key: ${{ secrets.AWS_SSH_KEY }}
           port: ${{ secrets.AWS_SSH_PORT }}
           script: |
-            docker stop $(docker ps -a -q) 
-            docker rm $(docker ps -a -q) 
-            docker pull rxjw95/flavorite-hub
-            docker run -d -p 8080:8080 --name flavorite rxjw95/flavorite-hub
+            sudo docker stop $(docker ps -a -q) 
+            sudo docker rm $(docker ps -a -q) 
+            sudo docker pull rxjw95/flavorite-hub
+            sudo docker run -d -p 8080:8080 --name flavorite rxjw95/flavorite-hub
             

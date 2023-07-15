@@ -189,3 +189,4 @@ next-env.d.ts
 frontend/node_modules
 frontend/yarn-error.log
 frontend/.next
+.idea/

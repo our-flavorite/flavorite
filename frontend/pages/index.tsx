@@ -1,5 +1,7 @@
+import TestComponent from "components/TestComponent/TestComponent";
+
 const Index = () => {
-  return <div>hello!!!</div>
+  return <TestComponent />
 }
 
 export default Index

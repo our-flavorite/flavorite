@@ -185,3 +185,7 @@ next-env.d.ts
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,nextjs,intellij+all,kotlin
 
+### client repository ###
+frontend/node_modules
+frontend/yarn-error.log
+frontend/.next

@@ -1,7 +1,7 @@
-name: Front Docker Deploy
+name: Frontend Docker Code Deploy
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ develop ]
     paths:
       - 'frontend/**'
 
@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Docker Image Build
-        run: docker build -t rxjw95/flavorite-hub .
+        run: docker build -t corat/flavorite-hub .
 
       - name: Docker Hub Login
         uses: docker/login-action@v2
@@ -28,7 +28,7 @@ jobs:
         run: docker push corat/flavorite-hub
 
       - name: SSH Commands
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v0.1.6
         with:
           host: ${{ secrets.AWS_SSH_HOST }}
           username: ${{ secrets.AWS_SSH_USERNAME }}
@@ -38,8 +38,5 @@ jobs:
             sudo docker stop $(sudo docker ps -a -q) 
             sudo docker rm $(sudo docker ps -a -q) 
             sudo docker pull corat/flavorite-hub
-            cd ./frontend
-            kill `ps -ef | grep "/flavorite/frontend" | grep -v grep | awk '{print $2}'`
-            nohup yarn && yarn dev 1>/dev/null 2>&1 & 
-
+            sudo docker run -d -p 3000:3000 --name flavorite/frontend corat/flavorite-hub
             

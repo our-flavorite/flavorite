@@ -1,6 +1,4 @@
-filters:
-  - label: FE
-    regexs:
-      - /Fix/
-    events: [ pull_request ]
-    targets: [ title ]
+labels:
+  "FE":
+    - /Fix/
+g

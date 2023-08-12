@@ -44,8 +44,8 @@ jobs:
           key: ${{ secrets.AWS_SSH_KEY }}
           port: ${{ secrets.AWS_SSH_PORT }}
           script: |
-            sudo docker stop $(sudo docker ps --filter "name=flavorite-be" -q) 
-            sudo docker rm $(sudo docker ps --filter "name=flavorite-be" -q) 
+            sudo docker stop $(sudo docker ps --filter "name=flavorite-be" -a -q) 
+            sudo docker rm $(sudo docker ps --filter "name=flavorite-be" -a -q) 
             sudo docker pull rxjw95/flavorite-hub
             sudo docker run -d -p 8080:8080 --name flavorite-be rxjw95/flavorite-hub
             

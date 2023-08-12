@@ -2,6 +2,6 @@ FE🌕:
   - 'frontend/**'
 BE🌑:
   - 'backend/**'
-공통👨‍👩‍👦:
+COMMON👨‍👩‍👦:
   - '.github/**'
   - '.gitignore'

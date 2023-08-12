@@ -1,2 +1,2 @@
-FE: 'flavorite/frontend/*'
-BE: 'flavorite/backend/*'
+FE: 'frontend/**'
+BE: 'backend/**'

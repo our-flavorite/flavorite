@@ -14,4 +14,3 @@ jobs:
         uses: actions/labeler@main
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          config-file-name: labeler-config.yml

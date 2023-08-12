@@ -5,5 +5,5 @@ import org.springframework.stereotype.Service
 @Service
 class MemberService {
 
-    fun hello(): String = "return corat hello!!!123"
+    fun hello(): String = "return corat hello!!!"
 }

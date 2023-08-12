@@ -1,6 +1,6 @@
 name: "Flavorite Labeler"
 on:
-  pull_request_target:
+  pull_request:
     branches:
       - 'develop'
 
@@ -13,6 +13,8 @@ jobs:
     steps:
       - id: label-the-PR
         uses: actions/labeler@v4
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - id: run-frontend-tests
         if: contains(steps.label-the-PR.outputs.all-labels, 'FE🌕')

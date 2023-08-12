@@ -2,7 +2,7 @@ name: PR Labeler
 on:
   pull_request:
     types: [ opened ]
-    branches: [ feature/se/feature-labeler-test ]
+    branches: [ feature/se/feature-labeler ]
 jobs:
   main:
     runs-on: ubuntu-latest

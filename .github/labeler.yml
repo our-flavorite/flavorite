@@ -1,3 +1,5 @@
-labels:
-  "FE":
-    - /Fix/
+FE:
+    regexs:
+      - /Fix/
+    events: [ pull_request ]
+    targets: [ title ]

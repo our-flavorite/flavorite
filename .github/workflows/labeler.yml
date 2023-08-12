@@ -16,19 +16,19 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - id: run-frontend-tests
+      - id: verify-frontend
         if: contains(steps.label-the-PR.outputs.all-labels, 'FE🌕')
         run: |
-          echo "Running frontend tests..."
+          echo "Running frontend build and tests..."
           # Put your commands for running frontend tests here
 
-      - id: run-backend-tests
+      - id: verify-backend
         if: contains(steps.label-the-PR.outputs.all-labels, 'BE🌑')
         run: |
-          echo "Running backend tests..."
+          echo "Running backend build and tests..."
           # Put your commands for running backend tests here
 
-      - id: run-backend-tests
+      - id: verify-common
         if: contains(steps.label-the-PR.outputs.all-labels, 'COMMON👨‍👩‍👦')
         run: |
-          echo "Running common setting changes..."
+          echo "Changing common..."

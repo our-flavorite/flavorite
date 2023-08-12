@@ -2,7 +2,7 @@ name: PR Labeler
 on:
   pull_request:
     types: [ opened ]
-    branches: [ feature/se/feature-labeler-test ]
+    branches: [ feature/se/feature-labeler ]
 jobs:
   main:
     runs-on: ubuntu-latest
@@ -13,4 +13,4 @@ jobs:
       - name: PR Labeler
         uses: actions/labeler@main
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}

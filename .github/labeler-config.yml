@@ -1,0 +1,6 @@
+filters:
+  - label: FE
+    regexs:
+      - /Fix/
+    events: [ pull_request ]
+    targets: [ title ]

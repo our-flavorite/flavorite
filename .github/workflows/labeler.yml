@@ -1,7 +1,7 @@
 name: PR Labeler
 on:
   pull_request:
-    types: [ opened, reopened ]
+    types: [ opened, reopened, edited ]
     branches: [ feature/se/feature-labeler ]
 jobs:
   main:
@@ -14,3 +14,4 @@ jobs:
         uses: actions/labeler@main
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+          config-file-name: labeler-config.yml

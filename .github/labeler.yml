@@ -1,5 +1,2 @@
-FE:
-    regexs:
-      - /Fix/
-    events: [ pull_request ]
-    targets: [ title ]
+FE: ['flavorite/frontend/*']
+BE: ['flavorite/backend/*']

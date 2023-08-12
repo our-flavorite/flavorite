@@ -1,5 +1,5 @@
 enable:
   prs: true
 labels:
-  "FE🌕": ['flavorite/frontend/*']
-  "BE🌑": ['flavorite/backend/*']
+  "FE": ['flavorite/frontend/*']
+  "BE": ['flavorite/backend/*']

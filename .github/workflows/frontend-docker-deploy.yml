@@ -1,0 +1,45 @@
+name: Front Docker Deploy
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'frontend/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: Docker Image Build
+        run: docker build -t rxjw95/flavorite-hub .
+
+      - name: Docker Hub Login
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_SE_ID }}
+          password: ${{ secrets.DOCKERHUB_SE_TOKEN }}
+
+      - name: Docker Hub Publish
+        run: docker push corat/flavorite-hub
+
+      - name: SSH Commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.AWS_SSH_HOST }}
+          username: ${{ secrets.AWS_SSH_USERNAME }}
+          key: ${{ secrets.AWS_SSH_KEY }}
+          port: ${{ secrets.AWS_SSH_PORT }}
+          script: |
+            sudo docker stop $(sudo docker ps -a -q) 
+            sudo docker rm $(sudo docker ps -a -q) 
+            sudo docker pull corat/flavorite-hub
+            cd ./frontend
+            kill `ps -ef | grep "/flavorite/frontend" | grep -v grep | awk '{print $2}'`
+            nohup yarn && yarn dev 1>/dev/null 2>&1 & 
+
+            

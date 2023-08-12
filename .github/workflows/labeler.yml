@@ -1,14 +1,27 @@
-name: PR Labeler
+name: "Flavorite Labeler"
 on:
-  - pull_request
+  pull_request_target:
+    branches:
+      - 'develop'
+
 jobs:
-  main:
-    runs-on: ubuntu-latest
+  triage:
     permissions:
       contents: read
       pull-requests: write
+    runs-on: ubuntu-latest
     steps:
-      - name: PR Labeler
-        uses: actions/labeler@main
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - id: label-the-PR
+        uses: actions/labeler@v4
+
+      - id: run-frontend-tests
+        if: contains(steps.label-the-PR.outputs.all-labels, 'FE🌕')
+        run: |
+          echo "Running frontend tests..."
+          # Put your commands for running frontend tests here
+
+      - id: run-backend-tests
+        if: contains(steps.label-the-PR.outputs.all-labels, 'BE🌑')
+        run: |
+          echo "Running backend tests..."
+          # Put your commands for running backend tests here

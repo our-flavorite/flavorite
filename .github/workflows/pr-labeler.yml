@@ -12,6 +12,7 @@ jobs:
       pull-requests: write
     steps:
       - name: PR Labeler
-        uses: actions/labeler@main
+        uses: TimonVS/pr-labeler-action@v4
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+          configuration-path: .github/pr-labeler.yml

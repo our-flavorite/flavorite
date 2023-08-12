@@ -35,8 +35,8 @@ jobs:
           key: ${{ secrets.AWS_SSH_KEY }}
           port: ${{ secrets.AWS_SSH_PORT }}
           script: |
-            sudo docker stop $(sudo docker ps -a -q) 
-            sudo docker rm $(sudo docker ps -a -q) 
+            sudo docker stop $(docker ps --filter "name=flavorite-fe" -q) 
+            sudo docker rm $(docker ps --filter "name=flavorite-fe" -q) 
             sudo docker pull corat/flavorite-hub
             sudo docker run -d -p 3000:3000 --name flavorite-fe corat/flavorite-hub
             

@@ -2,6 +2,8 @@ name: Docker Code Deploy
 on:
   push:
     branches: [ main, develop ]
+    paths:
+      - 'backend/**'
 
 jobs:
   deploy:

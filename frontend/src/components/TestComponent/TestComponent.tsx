@@ -3,7 +3,7 @@ import {cn} from "utils/commonUtils";
 
 const TestComponent = () => {
   return <div className={cn(s.test_component)}>
-    test component
+    test component!!!ㅎ
     <div>bug!!!</div>
   </div>
 }

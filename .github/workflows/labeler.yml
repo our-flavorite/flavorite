@@ -24,11 +24,6 @@ jobs:
 
       - id: verify-backend
         if: contains(steps.label-the-PR.outputs.all-labels, 'BE🌑')
-        name: setup JDK
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'corretto'
         run: |
           echo "Running frontend build and tests..."
           cd backend/

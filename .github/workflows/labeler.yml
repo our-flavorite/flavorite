@@ -29,6 +29,6 @@ jobs:
           # Put your commands for running backend tests here
 
       - id: verify-common
-        if: contains(steps.label-the-PR.outputs.all-labels, 'COMMON👨‍👩‍👦')
+        if: contains(steps.label-the-PR.outputs.all-labels, 'ETC👨‍👩‍👦')
         run: |
-          echo "Changing common..."
+          echo "Changing common settings..."

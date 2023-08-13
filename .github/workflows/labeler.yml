@@ -11,6 +11,9 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
       - id: label-the-PR
         uses: actions/labeler@v4
         with:
@@ -23,6 +26,10 @@ jobs:
           # Put your commands for running frontend tests here
 
       - id: verify-backend
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'corretto'
         if: contains(steps.label-the-PR.outputs.all-labels, 'BE🌑')
         run: |
           echo "Running frontend build and tests..."

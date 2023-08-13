@@ -9,17 +9,17 @@ plugins {
     kotlin("plugin.jpa") version "1.8.22"
 }
 
-
 allprojects {
     group = "com.flavorite"
     version = "1.0"
-
     repositories {
         mavenCentral()
     }
 }
 
+
 subprojects {
+
     apply(plugin = "java")
     apply(plugin = "org.jetbrains.kotlin.jvm")
     apply(plugin = "org.springframework.boot")

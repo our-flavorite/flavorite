@@ -2,6 +2,8 @@ FE🌕:
   - 'frontend/**'
 BE🌑:
   - 'backend/**'
+DEPLOY🚀:
+  - 'deploy/**'
 ETC👨‍👩‍👦:
   - '.github/**'
   - '.gitignore'

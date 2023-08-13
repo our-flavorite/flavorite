@@ -28,7 +28,12 @@ jobs:
           echo "Running backend build and tests..."
           # Put your commands for running backend tests here
 
-      - id: verify-common
+      - id: change-deploy-setting
+        if: contains(steps.label-the-PR.outputs.all-labels, 'DEPLOY🚀')
+        run: |
+          echo "Changing deploy settings..."
+
+      - id: change-etc-setting
         if: contains(steps.label-the-PR.outputs.all-labels, 'ETC👨‍👩‍👦')
         run: |
           echo "Changing common settings..."

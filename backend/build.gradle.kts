@@ -1,7 +1,6 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    application
     id("java")
     id("org.springframework.boot") version "3.1.1"
     id("io.spring.dependency-management") version "1.1.0"
@@ -9,11 +8,6 @@ plugins {
     kotlin("plugin.spring") version "1.8.22"
     kotlin("plugin.jpa") version "1.8.22"
 }
-
-application {
-    mainClass.set("com.flavorite.Application")
-}
-
 
 allprojects {
     group = "com.flavorite"

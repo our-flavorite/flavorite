@@ -11,37 +11,27 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v3
-
       - id: label-the-PR
         uses: actions/labeler@v4
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - id: verify-frontend
+      - id: labeling-frontend
         if: contains(steps.label-the-PR.outputs.all-labels, 'FE🌕')
         run: |
-          echo "Running frontend build and tests..."
-          # Put your commands for running frontend tests here
+          echo "Label frontend..."
 
-      - id: verify-backend
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'corretto'
+      - id: labeling-backend
         if: contains(steps.label-the-PR.outputs.all-labels, 'BE🌑')
         run: |
-          echo "Running frontend build and tests..."
-          cd backend/
-          ./gradlew build
+          echo "Label backend..."
 
-      - id: change-deploy-setting
+      - id: labeling-deploy-setting
         if: contains(steps.label-the-PR.outputs.all-labels, 'DEPLOY🚀')
         run: |
-          echo "Changing deploy settings..."
+          echo "Label deploy..."
 
-      - id: change-etc-setting
+      - id: labeling-etc-setting
         if: contains(steps.label-the-PR.outputs.all-labels, 'ETC👨‍👩‍👦')
         run: |
-          echo "Changing common settings..."
+          echo "Label settings..."

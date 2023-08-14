@@ -1,15 +1,14 @@
 dependencies {
-
-    implementation(project(":presentation:common-api"))
+    implementation(project(":presentation:security"))
     implementation(project(":application:common"))
-    implementation(project(":infrastructure:database"))
 
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 }
 
-tasks.named("jar") {
+tasks.named("bootJar") {
     enabled = false
 }

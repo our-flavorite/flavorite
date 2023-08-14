@@ -1,4 +1,4 @@
-package com.flavorite.application.common
+package com.flavorite.application.common.port
 
 import com.flavorite.application.common.dto.command.DeleteUserCommand
 import com.flavorite.applicatoin.dto.command.SaveUserCommand

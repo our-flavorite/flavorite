@@ -1,7 +1,7 @@
 package com.flavorite.core.vo
 
-class Email(
-    val value: String
+data class Email(
+    private val value: String
 ) {
 
     init {

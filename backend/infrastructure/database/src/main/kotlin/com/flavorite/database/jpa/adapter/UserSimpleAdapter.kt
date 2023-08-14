@@ -1,7 +1,7 @@
 package com.flavorite.database.jpa.adapter
 
-import com.flavorite.application.common.UserSimplePort
 import com.flavorite.application.common.dto.command.DeleteUserCommand
+import com.flavorite.application.common.port.UserSimplePort
 import com.flavorite.applicatoin.dto.command.SaveUserCommand
 import com.flavorite.applicatoin.dto.command.UpdateUserCommand
 import com.flavorite.applicatoin.dto.query.SelectUserQuery

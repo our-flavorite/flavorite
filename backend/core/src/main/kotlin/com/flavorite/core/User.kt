@@ -1,5 +1,6 @@
 package com.flavorite.core
 
+import com.flavorite.core.enum.UserRole
 import com.flavorite.core.vo.Address
 import com.flavorite.core.vo.Email
 import com.flavorite.core.vo.Password
@@ -10,7 +11,8 @@ class User(
     val username: Username,
     val email: Email,
     val password: Password,
-    val address: Address
+    val address: Address,
+    val roles: List<UserRole>
 ) {
 
 }

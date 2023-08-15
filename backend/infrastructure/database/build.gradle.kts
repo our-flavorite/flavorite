@@ -5,6 +5,7 @@ plugins {
 dependencies {
     implementation(project(":application:common"))
 
+    implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     runtimeOnly("com.h2database:h2")
 

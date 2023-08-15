@@ -3,7 +3,7 @@ package com.flavorite.presentation.common.api
 import com.flavorite.application.common.dto.command.SignUpCommand
 import com.flavorite.application.common.usecases.SignUpUseCase
 import com.flavorite.presentation.common.request.CommonRequest
-import com.flavorite.security.SecurityPasswordEncoder
+import com.flavorite.security.components.SecurityPasswordEncoder
 import jakarta.validation.Valid
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class SignUpController(
+class AuthenticateController(
     private val signUpUseCase: SignUpUseCase,
     private val securityPasswordEncoder: SecurityPasswordEncoder
 ) {

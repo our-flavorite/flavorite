@@ -5,7 +5,6 @@ COPY yarn.lock .
 RUN yarn install
 COPY . .
 RUN yarn build
-RUN yarn deploy
 RUN yarn install --production
 
 FROM node:16-alpine

@@ -1,19 +1,23 @@
-FROM node:16-alpine AS builder
-WORKDIR /usr/app
+# install dependencies
+FROM node:16-alpine AS deps
+WORKDIR /app
 COPY package.json .
 COPY yarn.lock .
-RUN yarn install
-COPY . .
-RUN yarn build
 RUN yarn install --production
-
+# build
+FROM node:16-alpine AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY src ./src
+COPY public ./public
+COPY package.json next.config.js jsconfig.json ./
+RUN yarn build
+# run
 FROM node:16-alpine
-WORKDIR /usr/app
-COPY --from=builder /usr/app/package.json ./package.json
-COPY --from=builder /usr/app/yarn.lock ./yarn.lock
-COPY --from=builder /usr/app/.next ./.next
-COPY --from=builder /usr/app/next.config.js ./next.config.js
-COPY --from=builder /usr/app/node_modules ./node_modules
-
+WORKDIR /app
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./
 EXPOSE 3000
 CMD ["yarn", "start"]

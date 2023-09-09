@@ -5,6 +5,7 @@ import com.flavorite.application.common.command.usecases.SignUpUseCase
 import com.flavorite.presentation.common.request.CommonRequest
 import com.flavorite.security.components.SecurityPasswordEncoder
 import jakarta.validation.Valid
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
@@ -19,6 +20,11 @@ class AuthenticateController(
     fun signUp(@RequestBody @Valid request: CommonRequest.SignUp) {
         val encodedPassword = securityPasswordEncoder.encode(request.password)
         signUpUseCase.execute(request.toDtoWithPasswordEncrypt(encodedPassword))
+    }
+
+    @GetMapping("v1/api/ping")
+    fun ping(): String {
+        return "승은 바보"
     }
 
 }

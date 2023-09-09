@@ -9,6 +9,7 @@ FROM node:16-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY src ./src
+COPY pages ./pages
 # COPY public ./public : public 디렉토리 생성 시 추가
 COPY package.json next.config.js tsconfig.json ./
 RUN yarn build

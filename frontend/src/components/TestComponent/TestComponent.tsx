@@ -6,7 +6,14 @@ import {useState} from "react";
 const TestComponent = () => {
   const [result, setResult] = useState<string | undefined>(undefined)
   const handleClick= () => {
-    axios.get('localhost:8080/v1/api/ping').then(result => {
+    axios.create({
+      baseURL: "http://flavorite-be:8080",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-origin": "*",
+      },
+      withCredentials: true,
+    }).get('/v1/api/ping').then(result => {
       setResult(result.data)
     })
   }

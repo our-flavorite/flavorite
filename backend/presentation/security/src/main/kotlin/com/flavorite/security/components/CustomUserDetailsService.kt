@@ -1,25 +1,25 @@
 package com.flavorite.security.components
 
-import com.flavorite.application.common.AuthenticateService
-import com.flavorite.application.common.dto.value.SecurityMemberDto
-import com.flavorite.security.value.SecurityMember
+import com.flavorite.application.common.query.UserQueryService
+import com.flavorite.application.common.query.dto.SecurityMemberDto
+import com.flavorite.security.domain.SecurityUser
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.stereotype.Service
 
 @Service
 class CustomUserDetailsService(
-    private val authenticateService: AuthenticateService
+    private val securityUserQueryService: UserQueryService
 ) : UserDetailsService {
 
     override fun loadUserByUsername(username: String?): UserDetails {
-        val dto = authenticateService.getMemberForSecurity(username.orEmpty())
+        val dto = securityUserQueryService.getMemberForSecurity(username.orEmpty())
         return dto.toSecurityMember()
     }
 
 }
 
-private fun SecurityMemberDto.toSecurityMember() = SecurityMember(
+private fun SecurityMemberDto.toSecurityMember() = SecurityUser(
     email,
     username,
     address,

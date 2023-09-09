@@ -1,9 +1,9 @@
 package com.flavorite.presentation.common.exception
 
-import com.flavorite.application.common.exception.AlreadyUserException
-import com.flavorite.application.common.exception.ErrorCode
-import com.flavorite.application.common.exception.ErrorCode.INVALID_FIELD
-import com.flavorite.application.common.exception.NotFoundUserException
+import com.flavorite.application.common.command.exception.AlreadyUserException
+import com.flavorite.application.common.command.exception.ErrorCode
+import com.flavorite.application.common.command.exception.ErrorCode.INVALID_FIELD
+import com.flavorite.application.common.command.exception.NotFoundUserException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.MethodArgumentNotValidException

@@ -1,6 +1,6 @@
 dependencies {
 
-    implementation(project(":presentation:common-api"))
+    implementation(project(":presentation:api"))
     implementation(project(":infrastructure:database"))
 
     implementation("org.springframework.boot:spring-boot-starter-web")

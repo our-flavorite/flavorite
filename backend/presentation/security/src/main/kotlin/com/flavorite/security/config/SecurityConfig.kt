@@ -1,9 +1,11 @@
 package com.flavorite.security.config
 
 import com.flavorite.security.components.CustomUserDetailsService
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Profile
 import org.springframework.http.HttpMethod
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.Customizer.withDefaults
@@ -40,15 +42,17 @@ class SecurityConfig(
                 .anyRequest().permitAll()
         }
         .httpBasic { it.disable() }
-        .cors(withDefaults())
         .formLogin { it.disable() }
+        .cors(withDefaults())
         .build()
 
 
     @Bean
+    @Profile("local")
     fun corsConfigurationSource(): CorsConfigurationSource {
         val configuration = CorsConfiguration()
-        configuration.addAllowedOrigin("http://flavorite-fe:3000")
+        configuration.addAllowedOriginPattern("*")
+        configuration.addAllowedHeader("*")
         configuration.addAllowedMethod(CorsConfiguration.ALL)
 
         val source = UrlBasedCorsConfigurationSource()

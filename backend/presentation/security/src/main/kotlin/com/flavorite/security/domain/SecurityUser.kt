@@ -4,6 +4,7 @@ import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 import java.time.Instant
+import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
 
 data class SecurityUser(
@@ -12,8 +13,8 @@ data class SecurityUser(
     private val address: String,
     private val password: String,
     private val roles: MutableList<String>,
-    private val registerDate: Instant,
-    private val modifyDate: Instant
+    private val createdDatetime: LocalDateTime,
+    private val modifiedDatetime: LocalDateTime
 ) : UserDetails {
 
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
@@ -29,7 +30,7 @@ data class SecurityUser(
     override fun isAccountNonLocked(): Boolean = true
 
     override fun isCredentialsNonExpired(): Boolean =
-        ChronoUnit.MONTHS.between(modifyDate, Instant.now()) >= 6
+        ChronoUnit.MONTHS.between(modifiedDatetime, Instant.now()) >= 6
 
     override fun isEnabled(): Boolean = true
 

@@ -1,6 +1,6 @@
 package com.flavorite.application.common.query.dto
 
-import java.time.Instant
+import java.time.LocalDateTime
 
 data class SecurityMemberDto(
     val email: String,
@@ -8,7 +8,7 @@ data class SecurityMemberDto(
     val address: String,
     val password: String,
     val roles: MutableList<String>,
-    val registerDate: Instant,
-    val modifyDate: Instant
+    val registerDate: LocalDateTime,
+    val modifyDate: LocalDateTime
 ) {
 }

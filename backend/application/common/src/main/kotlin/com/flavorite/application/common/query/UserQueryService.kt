@@ -1,9 +1,9 @@
 package com.flavorite.application.common.query
 
-import com.flavorite.application.common.command.exception.ErrorCode
-import com.flavorite.application.common.command.exception.NotFoundUserException
 import com.flavorite.application.common.query.dto.SecurityMemberDto
 import com.flavorite.application.common.query.port.UserQueryPort
+import exception.ErrorCode
+import exception.NotFoundUserException
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -12,8 +12,6 @@ import org.springframework.transaction.annotation.Transactional
 class UserQueryService (
     private val userQueryPort: UserQueryPort
 ){
-
-
     fun getMemberForSecurity(email: String): SecurityMemberDto =
         userQueryPort.selectSecurityMemberBy(email) ?: throw NotFoundUserException(ErrorCode.NOT_FOUND_USER)
 }

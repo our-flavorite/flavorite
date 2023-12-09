@@ -1,4 +1,4 @@
-export const API_BASE_PATH = 'http://localhost'
+export const API_BASE_PATH = 'http://localhost:3000'
 export const DEFAULT_TIMEOUT = 10000
 
 export interface APIRequestParam {

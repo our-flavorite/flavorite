@@ -16,6 +16,7 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: create
+      physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
     database-platform: org.hibernate.dialect.H2Dialect
     properties:
       hibernate:

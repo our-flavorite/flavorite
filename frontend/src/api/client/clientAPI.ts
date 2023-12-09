@@ -9,7 +9,7 @@ import {API_BASE_PATH} from "api/api.types";
 import {ObjectUtils} from "utils/objectUtils";
 import {QueryUtils} from "utils/queryUtils";
 
-class APIClass {
+class ClientAPIClass {
   private controller: AbortController
   
   constructor() {
@@ -34,9 +34,9 @@ class APIClass {
   }
   
   private async fetch<R>(url: string, {params, config}: APIRequestParamWithMethod): Promise<R | undefined> {
-    const {timeout= DEFAULT_TIMEOUT, headers = {}} = config
+    const {timeout= DEFAULT_TIMEOUT, headers = {}, baseUrl} = config
     const timeoutTimer = setTimeout(() => this.controller.abort, timeout)
-    const fetchUrl = `${API_BASE_PATH}${url}`
+    const fetchUrl = `${baseUrl ?? API_BASE_PATH}${url}`
     try {
       const requestInit: RequestInit = {
         credentials: 'same-origin',
@@ -58,7 +58,7 @@ class APIClass {
       return data
     } catch (e){
       // todo - logger setting
-      console.log('error: ', e)
+      console.log('error: ', e.message)
       throw e
     } finally {
       clearTimeout(timeoutTimer)
@@ -66,4 +66,4 @@ class APIClass {
   }
 }
 
-export const API = new APIClass()
+export const ClientAPI = new ClientAPIClass()

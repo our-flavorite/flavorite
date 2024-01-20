@@ -10,6 +10,11 @@ dependencies {
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 }
 
+
+tasks.named("bootJar") {
+    enabled = false
+}
+
 tasks.named("jar") {
     enabled = false
 }

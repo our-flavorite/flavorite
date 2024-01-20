@@ -1,51 +1,51 @@
-name: Backend Docker Code Deploy
-on:
-  push:
-    branches: [ develop ]
-    paths:
-      - 'backend/**'
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./backend
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3
-
-      - name: setup JDK
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'corretto'
-
-      - name: Spring Application Build
-        run: ./gradlew build
-
-      - name: Docker Image Build
-        run: docker build -t rxjw95/flavorite-hub .
-
-      - name: Docker Hub Login
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_JW_ID }}
-          password: ${{ secrets.DOCKERHUB_JW_TOKEN }}
-
-      - name: Docker Hub Publish
-        run: docker push rxjw95/flavorite-hub
-
-      - name: SSH Commands
-        uses: appleboy/ssh-action@v0.1.6
-        with:
-          host: ${{ secrets.AWS_SSH_HOST }}
-          username: ${{ secrets.AWS_SSH_USERNAME }}
-          key: ${{ secrets.AWS_SSH_KEY }}
-          port: ${{ secrets.AWS_SSH_PORT }}
-          script: |
-            sudo docker stop $(sudo docker ps --filter "name=flavorite-be" -a -q) 
-            sudo docker rm $(sudo docker ps --filter "name=flavorite-be" -a -q) 
-            sudo docker pull rxjw95/flavorite-hub
-            sudo docker run -d -p 8080:8080 --network flavorite-network --name flavorite-be rxjw95/flavorite-hub
-            
+#name: Backend Docker Code Deploy
+#on:
+#  push:
+#    branches: [ develop ]
+#    paths:
+#      - 'backend/**'
+#
+#jobs:
+#  deploy:
+#    runs-on: ubuntu-latest
+#    defaults:
+#      run:
+#        working-directory: ./backend
+#    steps:
+#      - name: checkout
+#        uses: actions/checkout@v3
+#
+#      - name: setup JDK
+#        uses: actions/setup-java@v3
+#        with:
+#          java-version: '17'
+#          distribution: 'corretto'
+#
+#      - name: Spring Application Build
+#        run: ./gradlew build
+#
+#      - name: Docker Image Build
+#        run: docker build -t rxjw95/flavorite-hub .
+#
+#      - name: Docker Hub Login
+#        uses: docker/login-action@v2
+#        with:
+#          username: ${{ secrets.DOCKERHUB_JW_ID }}
+#          password: ${{ secrets.DOCKERHUB_JW_TOKEN }}
+#
+#      - name: Docker Hub Publish
+#        run: docker push rxjw95/flavorite-hub
+#
+#      - name: SSH Commands
+#        uses: appleboy/ssh-action@v0.1.6
+#        with:
+#          host: ${{ secrets.AWS_SSH_HOST }}
+#          username: ${{ secrets.AWS_SSH_USERNAME }}
+#          key: ${{ secrets.AWS_SSH_KEY }}
+#          port: ${{ secrets.AWS_SSH_PORT }}
+#          script: |
+#            sudo docker stop $(sudo docker ps --filter "name=flavorite-be" -a -q)
+#            sudo docker rm $(sudo docker ps --filter "name=flavorite-be" -a -q)
+#            sudo docker pull rxjw95/flavorite-hub
+#            sudo docker run -d -p 8080:8080 --network flavorite-network --name flavorite-be rxjw95/flavorite-hub
+#

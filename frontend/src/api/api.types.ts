@@ -1,15 +1,15 @@
-import {NextResponse} from "next/server";
+import { NextResponse } from 'next/server'
 
 export const API_BASE_PATH = 'http://localhost:3000'
 export const DEFAULT_TIMEOUT = 10000
 
 export interface APIRequestParam {
-  params?: {[key in string]: any}
+  params?: { [key in string]: any }
   config?: APIRequestConfig
 }
 
 export interface APIRequestParamWithMethod {
-  params?: {[key in string]: any}
+  params?: { [key in string]: any }
   config?: APIRequestConfig & { method: string }
 }
 

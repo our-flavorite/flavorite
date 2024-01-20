@@ -5,5 +5,5 @@ const isNullish = (value?: any): boolean => {
 }
 
 export const NullUtils = {
-  isNullish
+  isNullish,
 }

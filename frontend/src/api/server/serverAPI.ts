@@ -1,25 +1,25 @@
-import {APIRequestParam, APIRequestParamWithMethod, DEFAULT_TIMEOUT} from "api/api.types";
-import {ObjectUtils} from "utils/objectUtils";
-import {QueryUtils} from "utils/queryUtils";
+import { APIRequestParam, APIRequestParamWithMethod, DEFAULT_TIMEOUT } from 'api/api.types'
+import { ObjectUtils } from 'utils/objectUtils'
+import { QueryUtils } from 'utils/queryUtils'
 
 class ServerAPIClass {
   get<T>(url: string, { params = {}, config = {} }: APIRequestParam): Promise<T | undefined> {
     const queryUrl = ObjectUtils.isNotEmpty(params) ? `${url}?${QueryUtils.stringify(params)}` : url
-    return this.fetch<T>(queryUrl, {config: {...config, method: 'GET'}})
+    return this.fetch<T>(queryUrl, { config: { ...config, method: 'GET' } })
   }
-  
-  post<T>(url: string, { params = {}, config = {}}: APIRequestParam): Promise<T | undefined> {
-    return this.fetch<T>(url, {params, config: {...config, method: 'POST'}})
+
+  post<T>(url: string, { params = {}, config = {} }: APIRequestParam): Promise<T | undefined> {
+    return this.fetch<T>(url, { params, config: { ...config, method: 'POST' } })
   }
-  
-  put<T>(url: string, {params = {}, config = {}}: APIRequestParam): Promise<T | undefined> {
-    return this.fetch<T>(url, {params, config: {...config, method: 'PUT'}})
+
+  put<T>(url: string, { params = {}, config = {} }: APIRequestParam): Promise<T | undefined> {
+    return this.fetch<T>(url, { params, config: { ...config, method: 'PUT' } })
   }
-  
-  delete<T>(url: string, { params = {}, config = {}}: APIRequestParam): Promise<T | undefined> {
-    return this.fetch<T>(url, {params, config: {...config, method: 'DELETE'}})
+
+  delete<T>(url: string, { params = {}, config = {} }: APIRequestParam): Promise<T | undefined> {
+    return this.fetch<T>(url, { params, config: { ...config, method: 'DELETE' } })
   }
-  
+
   private async fetch<T>(url: string, param: APIRequestParamWithMethod): Promise<T | undefined> {
     const { params, config } = param
     const { baseUrl, timeout = DEFAULT_TIMEOUT, headers } = config
@@ -54,6 +54,7 @@ export const ServerAPI = new ServerAPIClass()
 const fetchWithTimeout = (url: string, options: RequestInit, timeout: number): Promise<Response | undefined> => {
   return Promise.race([
     fetch(url, options),
-    new Promise<undefined>((resolve) => setTimeout(() => resolve(undefined), timeout)),
+    // eslint-disable-next-line no-promise-executor-return
+    new Promise<undefined>(resolve => setTimeout(() => resolve(undefined), timeout)),
   ])
 }

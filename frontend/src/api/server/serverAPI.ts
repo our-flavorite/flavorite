@@ -31,7 +31,7 @@ class ServerAPIClass {
           'Content-Type': 'application/json',
           ...headers,
         },
-        method: config.method,
+        method: config?.method,
         ...(ObjectUtils.isNotEmpty(params) ? { body: JSON.stringify(params) } : {}),
       }
 
@@ -43,7 +43,7 @@ class ServerAPIClass {
       return response.json()
     } catch (error) {
       // todo - logger setting
-      console.log('error: ', error.message)
+      console.log('error: ', error)
       throw error
     }
   }

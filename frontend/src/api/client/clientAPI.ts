@@ -47,7 +47,7 @@ class ClientAPIClass {
           'Content-Type': 'application/json',
           ...headers,
         },
-        method: config.method,
+        method: config?.method,
         signal: this.controller.signal,
         ...(ObjectUtils.isNotEmpty(params) && { body: JSON.stringify(params) }),
       }

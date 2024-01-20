@@ -1,8 +1,10 @@
 'use client'
 
-import { cn } from 'utils/commonUtils'
 import { useState } from 'react'
+
 import { ClientAPI } from 'api/client/clientAPI'
+import { cn } from 'utils/commonUtils'
+
 import s from './testComponent.module.scss'
 
 const TestComponent = () => {

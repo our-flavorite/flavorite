@@ -1,4 +1,4 @@
-package com.flavorite.api.response
+package com.flavorite.response
 
 import org.springframework.http.HttpStatus
 

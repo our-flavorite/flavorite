@@ -12,7 +12,7 @@ dependencies {
 
 
 tasks.named("bootJar") {
-    enabled = false
+    enabled = true
 }
 
 tasks.named("jar") {

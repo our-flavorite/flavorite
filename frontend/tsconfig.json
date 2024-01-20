@@ -24,6 +24,11 @@
       }
     ]
   },
+  "path": {
+    "api/*": ["api/*"],
+    "components/*": ["components/*"],
+    "utils/*": ["utils/*"],
+  },
   "include": [
     "next-env.d.ts",
     "**/*.ts",

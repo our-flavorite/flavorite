@@ -48,13 +48,17 @@ class ClientAPIClass {
         signal: this.controller.signal,
         ...(ObjectUtils.isNotEmpty(params) && { body: JSON.stringify(params) }),
       }
-      const result = await fetch(fetchUrl, requestInit).then((res) => res.json())
+
+      const result = await fetch(fetchUrl, requestInit)
+        .then((res) => {
+        return res.json()
+      })
+
       const { error, data } = result ?? {}
-      
       if(error){
         throw error
       }
-      // 타입 관련 에러가 많은 경우 zod도입 검토
+      // 타입 관련 에러가 많은 경우 zod도입 검토ㅌ
       return data
     } catch (e){
       // todo - logger setting

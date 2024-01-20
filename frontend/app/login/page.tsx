@@ -1,4 +1,4 @@
-import TestComponent from "../../src/components/TestComponent/TestComponent";
+import TestComponent from "components/TestComponent/TestComponent";
 
 const LoginPage = () => {
   return <div>

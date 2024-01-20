@@ -37,7 +37,7 @@ class ClientAPIClass {
   }
 
   private async fetch<R>(url: string, { params, config }: APIRequestParamWithMethod): Promise<R | undefined> {
-    const { timeout = DEFAULT_TIMEOUT, headers = {}, baseUrl } = config
+    const { timeout = DEFAULT_TIMEOUT, headers = {}, baseUrl } = config ?? {}
     const timeoutTimer = setTimeout(() => this.controller.abort, timeout)
     const fetchUrl = `${baseUrl ?? API_BASE_PATH}${url}`
     try {
@@ -64,7 +64,7 @@ class ClientAPIClass {
       return data
     } catch (e) {
       // todo - logger setting
-      console.log('error: ', e.message)
+      console.log('error: ', e)
       throw e
     } finally {
       clearTimeout(timeoutTimer)

@@ -22,7 +22,8 @@ class ServerAPIClass {
 
   private async fetch<T>(url: string, param: APIRequestParamWithMethod): Promise<T | undefined> {
     const { params, config } = param
-    const { baseUrl, timeout = DEFAULT_TIMEOUT, headers } = config
+    const { baseUrl, timeout = DEFAULT_TIMEOUT, headers } = config ?? {}
+
     const fetchUrl = baseUrl ? `${baseUrl}${url}` : url
 
     try {

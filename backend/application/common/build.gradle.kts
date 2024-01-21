@@ -1,14 +1,8 @@
-dependencies {
-    implementation(project(":domain:member"))
-    implementation(project(":global"))
-
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+plugins {
+    kotlin("plugin.spring") version "1.9.21"
+    kotlin("jvm") version "1.9.21"
 }
 
-tasks.named("bootJar") {
-    enabled = false
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter")
 }

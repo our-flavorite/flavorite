@@ -1,20 +1,9 @@
+plugins {
+    kotlin("jvm") version "1.9.21"
+    kotlin("plugin.spring") version "1.9.21"
+}
+
 dependencies {
-
-    implementation(project(":infrastructure:api"))
-    implementation(project(":infrastructure:database"))
-    implementation(project(":infrastructure:clients"))
-
     implementation("org.springframework.boot:spring-boot-starter")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-
-    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 }
 
-
-tasks.named("bootJar") {
-    enabled = true
-}
-
-tasks.named("jar") {
-    enabled = false
-}

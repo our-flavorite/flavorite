@@ -1,8 +1,10 @@
-dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+plugins {
+    kotlin("jvm") version "1.9.21"
+    kotlin("plugin.spring") version "1.9.21"
 }
 
-tasks.named("bootJar") {
-    enabled = false
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 }

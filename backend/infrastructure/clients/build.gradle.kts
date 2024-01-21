@@ -1,8 +1,8 @@
-dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.9.1"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+plugins {
+    kotlin("jvm") version "1.9.21"
+    kotlin("plugin.spring") version "1.9.21"
 }
 
-tasks.named("bootJar") {
-    enabled = false
+dependencies {
+
 }

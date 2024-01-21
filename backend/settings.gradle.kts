@@ -11,6 +11,6 @@ include("infrastructure:clients")
 
 include("application:common")
 
-include("domain:member")
+include("domain:user")
 
 include("global")

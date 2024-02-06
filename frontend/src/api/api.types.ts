@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 
-export const API_BASE_PATH = 'http://localhost:3000'
+export const CLIENT_API_BASE_PATH = 'http://localhost:3000'
+export const SERVER_API_BASE_PATH = 'http://localhost:8080'
 export const DEFAULT_TIMEOUT = 10000
 
 export interface APIRequestParam {

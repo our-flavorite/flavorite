@@ -4,7 +4,7 @@ import {
   DEFAULT_TIMEOUT,
   MutationResponse,
   QueryResponse,
-  API_BASE_PATH,
+  CLIENT_API_BASE_PATH,
 } from 'api/api.types'
 import { ObjectUtils } from 'utils/objectUtils'
 import { QueryUtils } from 'utils/queryUtils'
@@ -39,7 +39,7 @@ class ClientAPIClass {
   private async fetch<R>(url: string, { params, config }: APIRequestParamWithMethod): Promise<R | undefined> {
     const { timeout = DEFAULT_TIMEOUT, headers = {}, baseUrl } = config ?? {}
     const timeoutTimer = setTimeout(() => this.controller.abort, timeout)
-    const fetchUrl = `${baseUrl ?? API_BASE_PATH}${url}`
+    const fetchUrl = `${baseUrl ?? CLIENT_API_BASE_PATH}${url}`
     try {
       const requestInit: RequestInit = {
         credentials: 'same-origin',

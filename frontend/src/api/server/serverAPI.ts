@@ -1,4 +1,4 @@
-import { APIRequestParam, APIRequestParamWithMethod, DEFAULT_TIMEOUT } from 'api/api.types'
+import { APIRequestParam, APIRequestParamWithMethod, SERVER_API_BASE_PATH, DEFAULT_TIMEOUT } from 'api/api.types'
 import { ObjectUtils } from 'utils/objectUtils'
 import { QueryUtils } from 'utils/queryUtils'
 
@@ -24,7 +24,7 @@ class ServerAPIClass {
     const { params, config } = param
     const { baseUrl, timeout = DEFAULT_TIMEOUT, headers } = config ?? {}
 
-    const fetchUrl = baseUrl ? `${baseUrl}${url}` : url
+    const fetchUrl = `${baseUrl ?? SERVER_API_BASE_PATH}${url}`
 
     try {
       const init: RequestInit = {

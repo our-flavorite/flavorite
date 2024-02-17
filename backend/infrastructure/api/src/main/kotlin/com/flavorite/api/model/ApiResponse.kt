@@ -3,8 +3,8 @@ package com.flavorite.api.model
 import com.fasterxml.jackson.annotation.JsonInclude
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-data class ApiResponse <T>(
-    val body: T?
+data class ApiResponse<T>(
+    val body: T?,
 ) {
 
     companion object {

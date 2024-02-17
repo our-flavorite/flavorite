@@ -1,5 +1,4 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
     id("org.springframework.boot") version "3.2.1"
@@ -49,7 +48,7 @@ subprojects {
     }
 }
 
-// adapter 모듈을 Bean으로 등록하기 위해 Top-level에서 따로 제어
+// bootstrap 모듈을 Bean으로 등록하기 위해 Top-level에서 따로 제어
 project(":bootstrap") {
     dependencies {
         implementation(project(":infrastructure:api"))
@@ -59,6 +58,7 @@ project(":bootstrap") {
 
     tasks.bootJar { enabled = true }
     tasks.jar { enabled = false }
+    tasks.resolveMainClassName { enabled = false }
 }
 
 project(":application:common") {
@@ -107,7 +107,7 @@ project(":global") {
     tasks.bootJar { enabled = false }
 }
 
-
+// 하위 모듈을 그룹핑하는 모듈의 빌드 파일 생성을 제거하기 위해 Top-levet 에서 따로 제어
 project(":application") {
     tasks.bootJar { enabled = false }
     tasks.jar { enabled = false }

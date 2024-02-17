@@ -58,7 +58,6 @@ project(":bootstrap") {
 
     tasks.bootJar { enabled = true }
     tasks.jar { enabled = false }
-    tasks.resolveMainClassName { enabled = false }
 }
 
 project(":application:common") {

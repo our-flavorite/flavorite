@@ -8,3 +8,5 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 }
+
+tasks.bootJar { enabled = false }

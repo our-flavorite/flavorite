@@ -4,5 +4,9 @@ plugins {
 }
 
 dependencies {
+    implementation(project(":application:common"))
+    implementation(project(":global"))
 
 }
+
+tasks.bootJar { enabled = false }

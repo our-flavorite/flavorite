@@ -4,5 +4,10 @@ plugins {
 }
 
 dependencies {
+    implementation(project(":domain:user"))
+    implementation(project(":global"))
+
     implementation("org.springframework.boot:spring-boot-starter")
 }
+
+tasks.bootJar { enabled = false }

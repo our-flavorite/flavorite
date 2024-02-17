@@ -1,4 +1,4 @@
-name: Backend Docker Code Deploy
+name: Push Backend DockerHub
 on:
   push:
     branches: [ develop ]
@@ -35,15 +35,3 @@ jobs:
 
       - name: Docker Hub Publish
         run: docker push rxjw95/flavorite-hub
-#      - name: SSH Commands
-#        uses: appleboy/ssh-action@v0.1.6
-#        with:
-#          host: ${{ secrets.AWS_SSH_HOST }}
-#          username: ${{ secrets.AWS_SSH_USERNAME }}
-#          key: ${{ secrets.AWS_SSH_KEY }}
-#          port: ${{ secrets.AWS_SSH_PORT }}
-#          script: |
-#            sudo docker stop $(sudo docker ps --filter "name=flavorite-be" -a -q)
-#            sudo docker rm $(sudo docker ps --filter "name=flavorite-be" -a -q)
-#            sudo docker pull rxjw95/flavorite-hub
-#            sudo docker run -d -p 8080:8080 --network flavorite-network --name flavorite-be rxjw95/flavorite-hub

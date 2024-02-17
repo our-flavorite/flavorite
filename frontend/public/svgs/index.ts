@@ -1,3 +1,3 @@
-import Logo from './images/circle-heat-svgrepo-com.svg'
+import Logo from './images/logo.svg'
 
 export { Logo }

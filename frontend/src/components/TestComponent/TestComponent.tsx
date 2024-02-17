@@ -10,7 +10,8 @@ import s from './testComponent.module.scss'
 const TestComponent = () => {
   const [result, setResult] = useState<string | undefined>(undefined)
   const handleClick = async () => {
-    await ClientAPI.get<string>('/api/ping', {}).then(res => {
+    await ClientAPI.get<string>('/api/health', {}).then(res => {
+      console.log('res: ', res)
       setResult(res?.data)
     })
   }

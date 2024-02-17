@@ -6,6 +6,7 @@
       "components/*": ["components/*"],
       "utils/*": ["utils/*"],
       "app/*": ["../app/*"],
+      "public/*": ["../public/*"]
     },
     "lib": [
       "dom",

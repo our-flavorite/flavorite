@@ -4,7 +4,6 @@ const LoginPage = () => {
   return (
     <div>
       {'login page!\r'}
-      <TestComponent />
     </div>
   )
 }

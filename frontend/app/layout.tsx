@@ -14,6 +14,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang={'ko'}>
       <body>
+        <div>gnb 영역</div>
         <ReactQueryProvider>
         {children}
         </ReactQueryProvider>

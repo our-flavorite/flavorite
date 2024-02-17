@@ -1,3 +1,5 @@
+import { QueryClient } from '@tanstack/react-query'
+import ReactQueryProvider from 'components/QueryClient/QueryClient'
 import { Metadata } from 'next'
 import { ReactNode } from 'react'
 
@@ -9,10 +11,16 @@ interface RootLayoutProps {
   children: ReactNode
 }
 
+const queryClient = new QueryClient()
+
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang={'ko'}>
-      <body>{children}</body>
+      <body>
+        <ReactQueryProvider>
+        {children}
+        </ReactQueryProvider>
+      </body>
     </html>
   )
 }

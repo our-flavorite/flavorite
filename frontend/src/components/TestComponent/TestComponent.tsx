@@ -6,14 +6,18 @@ import { ClientAPI } from 'api/client/clientAPI'
 import { cn } from 'utils/commonUtils'
 
 import s from './testComponent.module.scss'
+import { useQuery } from '@tanstack/react-query'
 
 const TestComponent = () => {
   const [result, setResult] = useState<string | undefined>(undefined)
+  const { data, refetch } = useQuery<string>({
+    queryKey: ["example"], // todo - 관리 방법 참고해서 업데이트하기
+    queryFn: async () => await ClientAPI.get<string>('/api/health', {})
+  })
+
   const handleClick = async () => {
-    await ClientAPI.get<string>('/api/health', {}).then(res => {
-      console.log('res: ', res)
-      setResult(res?.data)
-    })
+    const res = await refetch()
+    setResult(data)
   }
 
   return (

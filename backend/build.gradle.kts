@@ -60,52 +60,6 @@ project(":bootstrap") {
     tasks.jar { enabled = false }
 }
 
-project(":application:common") {
-
-    dependencies {
-        implementation(project(":domain:user"))
-        implementation(project(":global"))
-    }
-
-    tasks.bootJar { enabled = false }
-}
-
-project(":infrastructure:api") {
-
-    dependencies {
-        implementation(project(":application:common"))
-        implementation(project(":global"))
-    }
-
-    tasks.bootJar { enabled = false }
-}
-
-project(":infrastructure:clients") {
-    dependencies {
-        implementation(project(":application:common"))
-        implementation(project(":global"))
-    }
-
-    tasks.bootJar { enabled = false }
-}
-
-project(":infrastructure:database") {
-    dependencies {
-        implementation(project(":application:common"))
-        implementation(project(":global"))
-    }
-
-    tasks.bootJar { enabled = false }
-}
-
-project(":domain:user") {
-    tasks.bootJar { enabled = false }
-}
-
-project(":global") {
-    tasks.bootJar { enabled = false }
-}
-
 // 하위 모듈을 그룹핑하는 모듈의 빌드 파일 생성을 제거하기 위해 Top-levet 에서 따로 제어
 project(":application") {
     tasks.bootJar { enabled = false }

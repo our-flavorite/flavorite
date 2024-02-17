@@ -1,18 +1,20 @@
-import Logo from "public/svgs/images/logo.svg"
+import Logo from 'public/svgs/images/logo.svg'
+import { cn } from 'utils/commonUtils'
 
+import GnbLoginButton from './GnbLoginButton/GnbLoginButton'
 import s from './gnbServer.module.scss'
-import { cn } from "utils/commonUtils"
-import GnbLoginButton from "./GnbLoginButton/GnbLoginButton"
 
 const GnbServer = () => {
-    return <div className={cn(s.gnb_server)}>
-        <div className={cn(s.inner)}>
+  return (
+    <div className={cn(s.gnb_server)}>
+      <div className={cn(s.inner)}>
         <Logo className={cn(s.logo)} />
         <div className={cn(s.login_button)}>
-            <GnbLoginButton/>
+          <GnbLoginButton />
         </div>
-        </div>
+      </div>
     </div>
+  )
 }
 
 export default GnbServer

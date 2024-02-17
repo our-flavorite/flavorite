@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController
 class HealthCheckAPI {
 
     @GetMapping("/health")
-    fun healthCheck(): ApiResponse<Unit> {
-        return ApiResponse.ok()
+    fun healthCheck(): ApiResponse<String> {
+        return ApiResponse.ok("이승은 바보천치")
     }
 
 }

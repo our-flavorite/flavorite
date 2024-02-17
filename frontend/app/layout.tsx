@@ -14,7 +14,7 @@ interface RootLayoutProps {
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang={'ko'}>
-      <body>
+      <body style={{margin: 0}}>
         <GnbServer />
         <ReactQueryProvider>
         {children}

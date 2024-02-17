@@ -1,4 +1,4 @@
-import Gnb from 'components/Gnb/Gnb'
+import GnbServer from 'components/Gnb/Gnb.server'
 import ReactQueryProvider from 'components/QueryClient/QueryClient'
 import { Metadata } from 'next'
 import { ReactNode } from 'react'
@@ -15,7 +15,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang={'ko'}>
       <body>
-        <Gnb />
+        <GnbServer />
         <ReactQueryProvider>
         {children}
         </ReactQueryProvider>

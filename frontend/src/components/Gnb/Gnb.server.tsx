@@ -1,4 +1,4 @@
-import { Logo } from "public/svgs"
+import Logo from "public/svgs/images/logo.svg"
 
 import s from './gnbServer.module.scss'
 import { cn } from "utils/commonUtils"

@@ -1,0 +1,14 @@
+.gnb_login_button {
+    width: 80px;
+    height: 40px;
+    border-color: #fd9943;
+    color: #fd9943;
+    border-radius: 3em;
+    background: #fff;
+  &:hover {
+    background-color: #f8c497;
+    color: #fff;
+    background-position: 0 100%;
+    cursor: pointer;
+  }
+}

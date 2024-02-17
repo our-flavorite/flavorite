@@ -1,3 +1,4 @@
+import Gnb from 'components/Gnb/Gnb'
 import ReactQueryProvider from 'components/QueryClient/QueryClient'
 import { Metadata } from 'next'
 import { ReactNode } from 'react'
@@ -14,7 +15,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang={'ko'}>
       <body>
-        <div>gnb 영역</div>
+        <Gnb />
         <ReactQueryProvider>
         {children}
         </ReactQueryProvider>

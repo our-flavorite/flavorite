@@ -1,6 +1,9 @@
 spring:
   profiles:
     default: local
+
+
   config:
     import:
       - application-db.yml
+      - application-api.yml

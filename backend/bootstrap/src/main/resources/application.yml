@@ -7,5 +7,3 @@ spring:
     import:
       - application-db.yml
       - application-api.yml
-server:
-  port: 8081

@@ -1,4 +1,3 @@
-import { QueryClient } from '@tanstack/react-query'
 import ReactQueryProvider from 'components/QueryClient/QueryClient'
 import { Metadata } from 'next'
 import { ReactNode } from 'react'
@@ -10,8 +9,6 @@ export const metadata: Metadata = {
 interface RootLayoutProps {
   children: ReactNode
 }
-
-const queryClient = new QueryClient()
 
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
